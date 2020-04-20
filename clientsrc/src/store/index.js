@@ -71,12 +71,18 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
-    }
+    },
     //#endregion
 
 
     //#region -- LISTS --
-
+    async addList({commit,dispatch}, list){
+      try {
+        let res = await api.post()
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
 
     //#endregion

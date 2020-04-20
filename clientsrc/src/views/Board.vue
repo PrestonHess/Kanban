@@ -2,10 +2,12 @@
   <div class="Board">
     <h1 v-if="board.title">{{board.title}}</h1>
     <h1 v-else>Loading...</h1>
+    <AddList> </AddList>
   </div>
 </template>
 
 <script>
+  import AddList from "../components/AddList"
 export default {
   name: "Board",
   mounted() {
@@ -17,6 +19,9 @@ export default {
       return this.$store.state.activeBoard;
     }
   },
-  props: ["boardId"]
+  props: ["boardId"],
+  components:{
+    AddList
+  }
 };
 </script>
