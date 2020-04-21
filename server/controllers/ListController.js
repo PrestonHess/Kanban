@@ -2,6 +2,7 @@ import express from "express";
 import BaseController from "../utils/BaseController";
 import { listService } from "../services/ListService";
 import auth0provider from "@bcwdev/auth0provider";
+import { taskService } from "../services/TaskService";
 
 export class ListController extends BaseController {
   constructor() {
@@ -11,12 +12,14 @@ export class ListController extends BaseController {
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .post("", this.create)
       .delete("/:id", this.delete)
+      .get("/:id/tasks", this.getAll)
   }
   async getAll(req, res, next) {
     try {
-      return res.send(["value1", "value2"]);
+      let data = await taskService.find({listId : req.params.id})
+      return res.send(data);
     } catch (error) {
-      next(error);
+      console.error(error);
     }
   }
   async create(req, res, next) {

@@ -1,14 +1,14 @@
 <template>
-    <div class="component">
-
-
+    <div class="task">
+        <li class="list-group-item">{{taskData.title}}</li>
     </div>
 </template>
 
 
 <script>
 export default {
-    name: 'component',
+    name: 'task',
+    props: ['taskData'],
     data(){
         return {}
     },
