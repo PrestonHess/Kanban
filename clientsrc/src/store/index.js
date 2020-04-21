@@ -18,6 +18,7 @@ export default new Vuex.Store({
   state: {
     user: {},
     boards: [],
+    lists: [],
     activeBoard: {}
   },
   mutations: {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     setActiveBoard(state, activeBoard) {
       state.activeBoard = activeBoard
+    },
+    setLists(state, lists) {
+      state.lists = lists
     }
   },
   actions: {
@@ -72,20 +76,46 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async deleteBoard({commit, dispatch}, boardId) {
+      try {
+        await api.delete('boards/' + boardId)
+        dispatch('getBoards')
+      } catch (error) {
+        console.error(error)
+      }
+    },
     //#endregion
 
 
     //#region -- LISTS --
     async addList({commit,dispatch}, list){
       try {
-        //TODO Need to complete list api
         let res = await api.post('lists', list)
+        console.log("add list", res.data)
+        dispatch('getLists', res.data.boardId)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getLists({commit, dispatch}, boardId) {
+      try {
+        console.log('invoked')
+        let res = await api.get(`boards/${boardId}/lists`)
+        console.log("here is the get list res", res.data)
+        commit('setLists', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async deleteList({commit, dispatch}, list) {
+      try {
+        console.log(list.boardId)
+        await api.delete('lists/' + list._id)
+        dispatch('getLists', list.boardId)
       } catch (error) {
         console.error(error)
       }
     }
-
-
     //#endregion
   }
 })

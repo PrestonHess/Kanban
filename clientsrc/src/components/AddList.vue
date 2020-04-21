@@ -30,9 +30,7 @@ export default {
         addList(){
             this.newList.boardId = this.activeBoardId;
             this.$store.dispatch('addList', this.newList)
-            
             this.newList = {}
-
         }
     },
     components:{}
