@@ -61,7 +61,8 @@ export class BoardsController extends BaseController {
   async delete(req, res, next) {
     try {
       await boardService.delete(req.params.id, req.userInfo.email)
-      await listService.deleteAll(req.params.id)
+      //TODO review how to delete using the cascading delete in models
+      // await listService.deleteAll(req.params.id)
       return res.send("Successfully deleted")
     } catch (error) { next(error) }
   }
