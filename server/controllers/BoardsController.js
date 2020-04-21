@@ -2,6 +2,7 @@ import express from 'express'
 import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
 import { boardService } from '../services/BoardService'
+import { listService } from "../services/ListService";
 
 
 
@@ -13,6 +14,7 @@ export class BoardsController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/lists', this.getListByBoard)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -26,7 +28,14 @@ export class BoardsController extends BaseController {
     }
     catch (err) { next(err) }
   }
-
+  async getListByBoard(req, res, next) {
+    try {
+      let data = await listService.find({boardId : req.params.id})
+      return res.send(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   async getById(req, res, next) {
     try {
       let data = await boardService.getById(req.params.id, req.userInfo.email)
@@ -52,6 +61,7 @@ export class BoardsController extends BaseController {
   async delete(req, res, next) {
     try {
       await boardService.delete(req.params.id, req.userInfo.email)
+      await listService.deleteAll(req.params.id)
       return res.send("Successfully deleted")
     } catch (error) { next(error) }
   }
