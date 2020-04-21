@@ -11,7 +11,15 @@
   </ul>
   <div class="card-body">
     <button type="button" class="btn btn-danger" @click="deleteList()">Delete List</button>
-    <a href="#" class="card-link">Another link</a>
+    <form @submit.prevent="addTask()">
+            <div class="form-group">
+                <label for="addTask">Add Task</label>
+                <input type="text" name="addTask" id="" class="form-control" placeholder="enter task..." 
+                aria-describedby="helpId" required v-model="addTask.title">
+            </div>
+            <button type="submit" class="btn btn-secondary">Add Task</button>
+        </form>
+
   </div>
 </div>
 
