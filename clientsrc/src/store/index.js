@@ -78,7 +78,8 @@ export default new Vuex.Store({
     //#region -- LISTS --
     async addList({commit,dispatch}, list){
       try {
-        let res = await api.post()
+        //TODO Need to complete list api
+        let res = await api.post('lists', list)
       } catch (error) {
         console.error(error)
       }

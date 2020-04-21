@@ -18,7 +18,6 @@ export class BoardsController extends BaseController {
       .delete('/:id', this.delete)
   }
 
-
   async getAll(req, res, next) {
     try {
       //only gets boards by user who is logged in

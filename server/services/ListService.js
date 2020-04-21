@@ -1,7 +1,11 @@
 import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
-class ValuesService {
+class ListService {
+  getListsByBoard(body) {
+    //TODO Need to find all lists by board ID and return the data
+    // let lists = await dbContext.Lists.
+  }
   async find(query={}) {
     let values = await dbContext.Values.find(query);
     return values;
@@ -13,6 +17,11 @@ class ValuesService {
     }
     return value;
   }
+
+  async create(rawData) {
+    let data = await dbContext.Lists.create(rawData)
+    return data
+  }
 }
 
-export const valuesService = new ValuesService();
+export const listService = new ListService();
