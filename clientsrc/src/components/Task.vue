@@ -1,7 +1,9 @@
 <template>
   <div>
-    <li data-toggle="modal" :data-target="'#task-modal-'+taskData._id" class="task list-group-item">
+    <li   class="task list-group-item">
+      <div :data-target="'#task-modal-'+taskData._id" class="title" data-toggle="modal">
       {{taskData.title}}
+      </div>
       <button
         type="button"
         class="close text-danger"
@@ -40,4 +42,9 @@ export default {
 
 
 <style scoped>
+.title{
+  display: inline;
+  padding: 1rem;
+ 
+}
 </style>

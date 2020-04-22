@@ -1,21 +1,28 @@
 <template>
   <div class="list my-2 col-6 col-md-3">
-    <div class="card">
+    <div class="card ">
+      <button
+        type="button"
+        class="close text-danger text-right pr-2 pt-1"
+        @click="deleteList()"
+      >
+        <span>&times;</span>
+      </button>
   <div class="card-body">
+    
     <h5 class="card-title">{{listData.title}}</h5>
   </div>
   <ul class="list-group list-group-flush">
     <Task v-for="Task in Tasks" :taskData="Task" :key="Task._id"> </Task>
   </ul>
   <div class="card-body">
-    <button type="button" class="btn btn-danger" @click="deleteList()">Delete List</button>
+    <!-- <button type="button" class="btn btn-danger" @click="deleteList()">Delete List</button> -->
     <form @submit.prevent="addTask()">
             <div class="form-group">
-                <label for="newTask">Add Task</label>
-                <input type="text" name="newTask" id="" class="form-control" placeholder="enter task..." 
+                <input type="text" name="newTask" id="" class="form-control form-control-sm" placeholder="enter task..." 
                 aria-describedby="helpId" required v-model="newTask.title">
-            </div>
             <button type="submit" class="btn btn-secondary">Add Task</button>
+            </div>
         </form>
   </div>
 </div>
@@ -61,4 +68,7 @@ export default {
 
 
 <style scoped>
+.card{
+  /* background-color: #EEF4F1; */
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="Board container-fluid">
+  <div class="Board container-fluid ">
     <h1 v-if="board.title" class="text-capitalize">{{board.title}}</h1>
     <h1 v-else>Loading...</h1>
     <AddList> </AddList>
