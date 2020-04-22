@@ -17,7 +17,6 @@
             </div>
             <button type="submit" class="btn btn-secondary">Add Task</button>
         </form>
-
   </div>
 </div>
 

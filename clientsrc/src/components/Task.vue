@@ -1,6 +1,5 @@
 <template>
-  <div class="task">
-    <li class="list-group-item">
+    <li data-toggle="modal" :data-target="'#task-modal-'+taskData._id" class="task list-group-item">
       {{taskData.title}}
       <button
         type="button"
@@ -9,12 +8,13 @@
       >
         <span>&times;</span>
       </button>
+    <TaskDetails :taskData="taskData"></TaskDetails>
     </li>
-  </div>
 </template>
 
 
 <script>
+import TaskDetails from "./TaskDetails"
 export default {
   name: "task",
   props: ["taskData"],
@@ -23,11 +23,16 @@ export default {
   },
   computed: {},
   methods: {
-      deleteTask(task) {
-          this.$store.dispatch('deleteTask', task)
+      deleteTask() {
+          this.$store.dispatch('deleteTask', this.taskData)
+      },
+      setActiveTask() {
+          this.$store.dispatch('setActiveTask', this.taskData)
       }
   },
-  components: {}
+  components: {
+      TaskDetails
+  }
 };
 </script>
 
