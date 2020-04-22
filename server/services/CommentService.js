@@ -8,9 +8,6 @@ class CommentService {
   }
   async delete(id) {
     let data = await dbContext.Comments.findOneAndRemove({ _id : id });
-    // if (!data) {
-    //   throw new BadRequest("Invalid ID or you do not own this list");
-    // }
     return data
   }
  

@@ -13,11 +13,20 @@ export class TaskController extends BaseController {
       .get("", this.getAll)
       .get("/:id", this.getById)
       .delete("/:id", this.deleteTask)
+      .put('/:id', this.changeTask)
       .get('/:id/comments', this.getComments)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .post("", this.create);
   }
 
+  async changeTask(req, res, next) {
+    try {
+      let data = await taskService.changeTask(req.params.id, req.body , req.userInfo.email)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
   async getComments(req, res, next) {
     try {
       let data = await commentService.find(req.params.id)

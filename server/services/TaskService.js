@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
 class TaskService {
+    async changeTask(id, listIDs, email) {
+      let task = await dbContext.Tasks.findOneAndUpdate({ _id: id, creatorEmail: email}, { listId : listIDs.newListId}, { new : true })
+      return task
+    }
     async getById(id) {
       let task = await dbContext.Tasks.findById(id)
       return task

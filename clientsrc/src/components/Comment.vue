@@ -1,6 +1,14 @@
 <template>
   <div class="Comment">
-    <p>{{commentData.body}}</p>
+    <p>{{commentData.body}}
+      <button
+        type="button"
+        class="close text-danger"
+        @click="deleteComment()"
+      >
+        <span>&times;</span>
+      </button>
+    </p>
   </div>
 </template>
 
@@ -15,7 +23,11 @@ export default {
   computed:{
 
   },
-  methods:{},
+  methods:{
+    deleteComment() {
+      this.$store.dispatch('deleteComment', this.commentData)
+    }
+  },
   components:{}
 }
 </script>

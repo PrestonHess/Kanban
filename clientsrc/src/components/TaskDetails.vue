@@ -35,8 +35,22 @@
             </form>
           </div>
           <div class="modal-footer">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >Move Task</button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div v-for="list in lists" :key="list._id">
+                  <a class="text-center dropdown-item" v-if="list._id != taskData.listId" data-dismiss="modal" @click.prevent="changeTask(list)">{{list.title}}</a>
+                </div>
+              </div>
+            </div>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -56,9 +70,12 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch('getComments', this.taskData._id)
+    this.$store.dispatch("getComments", this.taskData._id);
   },
   computed: {
+    lists() {
+      return this.$store.state.lists
+    },
     activeTask() {
       return this.$store.state.activeTask;
     },
@@ -67,10 +84,20 @@ export default {
     }
   },
   methods: {
-    addComment(){
-      this.comment.taskId = this.taskData._id
-      this.$store.dispatch('addComment', this.comment)
-      this.comment = {}
+    addComment() {
+      this.comment.taskId = this.taskData._id;
+      this.$store.dispatch("addComment", this.comment);
+      this.comment = {};
+    },
+    changeTask(list) {
+      let listIDs = {
+        oldListId : this.taskData.listId,
+        newListId : list._id,
+        taskId: this.taskData._id
+      }
+      console.log(listIDs)
+      this.$store.dispatch('changeTask', listIDs);
+      // this.$store.dispatch('getTasks', this.key)
     }
   },
   components: {
@@ -81,4 +108,10 @@ export default {
 
 
 <style scoped>
+.modal-footer {
+      justify-content: space-between;
+}
+.dropdown-item {
+  cursor: pointer;
+}
 </style>
