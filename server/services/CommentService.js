@@ -14,8 +14,8 @@ class CommentService {
     return data
   }
  
-  async find(query={}) {
-    let comments = await dbContext.Comments.find(query);
+  async find(id) {
+    let comments = await dbContext.Comments.find({taskId : id});
     if (!comments) {
       throw new BadRequest("No Lists found")
     }
@@ -35,4 +35,4 @@ class CommentService {
   }
 }
 
-export const CommentService = new CommentService()
+export const commentService = new CommentService()

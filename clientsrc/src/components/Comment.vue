@@ -1,6 +1,6 @@
 <template>
   <div class="Comment">
-    <p></p>
+    <p>{{commentData.body}}</p>
   </div>
 </template>
 
@@ -8,11 +8,12 @@
 <script>
 export default {
   name: 'Comment',
+  props: ['commentData'],
   data(){ 
     return {}
   },
   computed:{
-    
+
   },
   methods:{},
   components:{}

@@ -17,7 +17,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <Comment v-for="Comment in Comments" :commentData="Comment" :key="Comment._id"></Comment>
+            <Comment v-for="Comment in comments" :commentData="Comment" :key="Comment._id"></Comment>
             <form class="form-inline justify-content-center" @submit.prevent="addComment()">
               <div class="form-group">
                 <input
@@ -55,9 +55,15 @@ export default {
       comment: {}
     };
   },
+  mounted() {
+    this.$store.dispatch('getComments', this.taskData._id)
+  },
   computed: {
     activeTask() {
       return this.$store.state.activeTask;
+    },
+    comments() {
+      return this.$store.state.comments[this.taskData._id];
     }
   },
   methods: {

@@ -1,7 +1,7 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
-import { taskService } from "../services/TaskService";
+import { commentService } from "../services/CommentService";
 
 export class CommentController extends BaseController {
   constructor() {
@@ -25,7 +25,7 @@ export class CommentController extends BaseController {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorEmail = req.userInfo.email;
-      let data = await taskService.create(req.body)
+      let data = await commentService.create(req.body)
       res.send(req.body);
     } catch (error) {
       next(error);
@@ -34,7 +34,7 @@ export class CommentController extends BaseController {
 
   async delete(req, res, next) {
     try {
-      await taskService.delete(req.params.id)
+      await commentService.delete(req.params.id)
       return res.send("Successfully deleted")
     } catch (error) {
       console.error(error)

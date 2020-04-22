@@ -2,6 +2,7 @@ import express from "express";
 import BaseController from "../utils/BaseController";
 import { taskService } from "../services/TaskService";
 import auth0provider from "@bcwdev/auth0provider";
+import { commentService } from "../services/CommentService";
 
 
 export class TaskController extends BaseController {
@@ -12,8 +13,18 @@ export class TaskController extends BaseController {
       .get("", this.getAll)
       .get("/:id", this.getById)
       .delete("/:id", this.deleteTask)
+      .get('/:id/comments', this.getComments)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .post("", this.create);
+  }
+
+  async getComments(req, res, next) {
+    try {
+      let data = await commentService.find(req.params.id)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
   }
   async getAll(req, res, next) {
     try {
