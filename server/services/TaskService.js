@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
 class TaskService {
+    async deleteTask(id, userEmail) {
+      let task = await dbContext.Tasks.findOneAndRemove({ _id: id, creatorEmail: userEmail });
+      return task
+    }
     async find(query = {}) {
         let task = await dbContext.Tasks.find(query);
         return task;

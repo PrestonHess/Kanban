@@ -147,6 +147,14 @@ export default new Vuex.Store({
         } catch (error) {
           console.error(error)
         }
+      },
+      async deleteTask({commit, dispatch}, task){
+        try {
+          await api.delete(`tasks/${task._id}`, task)
+          dispatch('getTasks', task.listId)
+        } catch (error) {
+          console.error(error)
+        }
       }
     //#endregion
   }

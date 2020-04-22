@@ -10,6 +10,7 @@ export class TaskController extends BaseController {
     this.router
     .use(auth0provider.getAuthorizedUserInfo)
       .get("", this.getAll)
+      .delete("/:id", this.deleteTask)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .post("", this.create);
   }
@@ -18,6 +19,15 @@ export class TaskController extends BaseController {
       return res.send(["value1", "value2"]);
     } catch (error) {
       next(error);
+    }
+  }
+
+  async deleteTask(req, res, next) {
+    try {
+      await taskService.deleteTask(req.params.id, req.userInfo.email)
+      return res.send("Deleted Task!")
+    } catch (error) {
+      next(error)
     }
   }
   async create(req, res, next) {
