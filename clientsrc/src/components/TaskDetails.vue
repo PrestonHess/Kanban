@@ -18,7 +18,21 @@
           </div>
           <div class="modal-body">
             <Comment v-for="Comment in Comments" :commentData="Comment" :key="Comment._id"></Comment>
-            <form class="inline"></form>
+            <form class="form-inline justify-content-center" @submit.prevent="addComment()">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="comment"
+                  id
+                  class="mx-1 form-control form-control-sm"
+                  placeholder="enter comment..."
+                  aria-describedby="helpId"
+                  required
+                  v-model="comment.body"
+                />
+                <button type="submit" class="mx-2 btn btn-sm btn-secondary">Add Comment</button>
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -32,19 +46,27 @@
 
 
 <script>
-import Comment from "./Comment.vue"
+import Comment from "./Comment.vue";
 export default {
   name: "TaskDetails",
-  props: ['taskData'],
+  props: ["taskData"],
   data() {
-    return {};
+    return {
+      comment: {}
+    };
   },
   computed: {
     activeTask() {
-      return this.$store.state.activeTask
+      return this.$store.state.activeTask;
     }
   },
-  methods: {},
+  methods: {
+    addComment(){
+      this.comment.taskId = this.taskData._id
+      this.$store.dispatch('addComment', this.comment)
+      this.comment = {}
+    }
+  },
   components: {
     Comment
   }

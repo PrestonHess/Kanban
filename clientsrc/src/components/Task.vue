@@ -1,4 +1,5 @@
 <template>
+  <div>
     <li data-toggle="modal" :data-target="'#task-modal-'+taskData._id" class="task list-group-item">
       {{taskData.title}}
       <button
@@ -8,8 +9,9 @@
       >
         <span>&times;</span>
       </button>
-    <TaskDetails :taskData="taskData"></TaskDetails>
     </li>
+    <TaskDetails :taskData="taskData"></TaskDetails>
+  </div>
 </template>
 
 

@@ -1,6 +1,6 @@
 <template>
   <div class="Comment">
-    
+    <p></p>
   </div>
 </template>
 
@@ -11,7 +11,9 @@ export default {
   data(){ 
     return {}
   },
-  computed:{},
+  computed:{
+    
+  },
   methods:{},
   components:{}
 }
