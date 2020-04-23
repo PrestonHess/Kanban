@@ -1,6 +1,6 @@
 <template>
   <div>
-    <li   class="task list-group-item">
+    <li class="task text-left pl-0 list-group-item">
       <div :data-target="'#task-modal-'+taskData._id" class="title" data-toggle="modal">
       {{taskData.title}}
       </div>
@@ -45,6 +45,7 @@ export default {
 .title{
   display: inline;
   padding: 1rem;
- 
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.2em
 }
 </style>

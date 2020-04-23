@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light  outline mb-3">
-    <router-link class="navbar-brand  text-light" :to="{ name: 'home' }"
+    <router-link class="navbar-brand text-light" id="navbar-font" :to="{ name: 'home' }"
       >Kanban</router-link
     >
     <button
@@ -71,6 +71,10 @@ export default {
 </script>
 
 <style>
+#navbar-font{
+  font-family: 'Pacifico', cursive;
+  font-size: 1.7rem;
+}
 .navbar{
   background-color: #5f4c4f;
 }
