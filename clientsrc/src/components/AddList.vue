@@ -2,7 +2,6 @@
   <div class="add-list">
     <div class="row justify-content-center">
       <div class="col-6">
-        <small class="text-muted mx-2" for="title">Create New List</small>
         <form class="form-inline justify-content-center" @submit.prevent="addList()">
           <div class="form-group">
             <input
@@ -10,7 +9,7 @@
               name="title"
               id
               class="mx-1 form-control form-control-sm"
-              placeholder="enter title..."
+              placeholder="List Title..."
               aria-describedby="helpId"
               required
               v-model="newList.title"

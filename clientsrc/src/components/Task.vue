@@ -6,10 +6,10 @@
       </div>
       <button
         type="button"
-        class="close text-danger"
+        class="close text-secondary"
         @click="deleteTask(taskData)"
       >
-        <span>&times;</span>
+        <span>&#10005;</span>
       </button>
     </li>
     <TaskDetails :taskData="taskData"></TaskDetails>
@@ -47,5 +47,8 @@ export default {
   padding: 1rem;
   font-family: 'Patrick Hand', cursive;
   font-size: 1.2em
+}
+span{
+  font-size: 15px;
 }
 </style>
