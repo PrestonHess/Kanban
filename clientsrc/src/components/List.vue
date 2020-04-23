@@ -17,7 +17,7 @@
           <div class="form-group">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary" type="submit">+</button>
+                <button class="btn btn-outline-secondary" type="submit">&#10148;</button>
               </div>
               <input
                 type="text"

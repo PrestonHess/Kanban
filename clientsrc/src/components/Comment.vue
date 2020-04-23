@@ -25,6 +25,7 @@ export default {
   },
   methods:{
     deleteComment() {
+      console.log(this.commentData)
       this.$store.dispatch('deleteComment', this.commentData)
     }
   },
