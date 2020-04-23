@@ -1,6 +1,6 @@
 <template>
   <div class="list my-2 col-6 col-md-3">
-    <div class="card ">
+    <div class="card shadow">
       <button
         type="button"
         class="close text-danger text-right pr-2 pt-1"

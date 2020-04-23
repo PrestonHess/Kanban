@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'home' }"
+  <nav class="navbar navbar-expand-lg navbar-light  outline mb-3">
+    <router-link class="navbar-brand  text-light" :to="{ name: 'home' }"
       >Kanban</router-link
     >
     <button
@@ -15,9 +15,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto ">
         <li class="nav-item" :class="{ active: $route.name == 'home' }">
-          <router-link :to="{ name: 'home' }" class="nav-link"
+          <router-link :to="{ name: 'home' }" class="nav-link text-light"
             >Home</router-link
           >
         </li>
@@ -26,7 +26,7 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'boards' }"
         >
-          <router-link class="nav-link" :to="{ name: 'boards' }"
+          <router-link class="nav-link text-light" :to="{ name: 'boards' }"
             >Dashboard</router-link
           >
         </li>
@@ -70,4 +70,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.navbar{
+  background-color: #5f4c4f;
+}
+.outline{
+  border-top: 0px ;
+  border-left: 0px ;
+  border-right: 0px ;
+  border-bottom: 2px;
+  border-color: rgb(84, 82, 74, 20);
+  border-style: solid;
+}
+.text-light{
+  color: rgb(156, 156, 156);
+}
+</style>

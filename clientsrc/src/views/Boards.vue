@@ -1,6 +1,6 @@
 <template>
   <div class="boards container-fluid">
-    WELCOME TO THE BOARDS!!!
+    Board View: 
     <div class="row justify-content-center">
       <div class="col-6">
         <form @submit.prevent="addBoard">
@@ -15,21 +15,23 @@
             type="text"
             class="form-control m-1"
             placeholder="Description"
-            v-model="newBoard.description"
+            v-model="newBoard.description" required
           />
-          <button class="btn btn-secondary" type="submit">Create Board</button>
+          <button class="btn btn-color mt-2" type="submit">Create Board</button>
         </form>
       </div>
     </div>
 
     <div class="row justify-content-center">
-    <div v-for="board in boards" :boardId="board._id" :key="board.id">
-      <div class="card bg-light shadow p-3 m-3">
-        <div class="card-body bg-light">
-          <button type="button" class="close text-danger" @click="deleteBoard(board._id)">
+    <div class="" v-for="board in boards" :boardId="board._id" :key="board.id">
+      <div class="card  shadow p-3 m-3">
+        <div>
+          <button type="button" class="close text-danger button-styling " @click="deleteBoard(board._id)">
           <span>&times;</span>
         </button>
-          <router-link id="board-card"
+        </div>
+        <div class="card-body mt-n3 ">
+          <router-link id="board-card" class="font-sans text-capitalize text-overflow text-dark"
             @click="setActiveBoard(board._id)"
             :to="{name: 'board', params: {boardId: board.id}}"
           >{{board.title}}</router-link>
@@ -73,6 +75,35 @@ export default {
 
 <style>
 #board-card{
-  color:black
+  color:rgb(93, 93, 93);
+  
+}
+.card{
+  background-color: #ffffff
+}
+.font-sans{
+font-family: 'Spartan', sans-serif;
+font-weight: bold;
+font-size: 1em;
+}
+#board-card:hover{
+  text-decoration: none;
+  color:rgb(42, 42, 42)
+}
+.button-styling{
+  max-width: 30px;
+  
+}
+.text-overflow{
+   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 15em;
+  min-width: 8em;
+}
+.btn-color{
+  background-color: #5f4c4f;
+  color: white
 }
 </style>
