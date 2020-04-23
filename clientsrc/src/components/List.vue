@@ -13,7 +13,6 @@
         <Task v-for="Task in Tasks" :taskData="Task" :key="Task._id"></Task>
       </ul>
       <div class="card-body">
-        <!-- <button type="button" class="btn btn-danger" @click="deleteList()">Delete List</button> -->
         <form @submit.prevent="addTask()">
           <div class="form-group">
             <div class="input-group mb-3">

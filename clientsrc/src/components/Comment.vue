@@ -3,10 +3,10 @@
     <p>{{commentData.body}}
       <button
         type="button"
-        class="close text-danger"
+        class="close text-secondary"
         @click="deleteComment()"
       >
-        <span>&times;</span>
+        <span>&#10005;</span>
       </button>
     </p>
   </div>
@@ -34,5 +34,7 @@ export default {
 
 
 <style scoped>
-
+span{
+  font-size: 15px;
+}
 </style>

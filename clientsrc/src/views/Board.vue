@@ -2,6 +2,7 @@
   <div class="Board container-fluid ">
     <h1 v-if="board.title" class="text-capitalize board-font">{{board.title}}</h1>
     <h1 v-else>Loading...</h1>
+    <p class="text-muted">{{board.description}}</p>
     <AddList> </AddList>
     <div class="row my-2 justify-content-around">
       <list v-for="list in lists" :listData="list" :key="list._id"></list>

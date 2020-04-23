@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { dbContext } from "../db/DbContext"
 const Schema = mongoose.Schema;
 let ObjectId = Schema.Types.ObjectId
 
@@ -16,5 +17,15 @@ const Task = new Schema({
     justOne: true
   })
 
+  //CASCADE ON DELETE
+Task.pre('findOneAndRemove', function (next) {
+  //lets find all the lists and remove them
+  Promise.all([
+    // @ts-ignore
+    dbContext.Comments.deleteMany({ taskId: this._conditions._id })
+  ])
+    .then(() => next())
+    .catch(err => next(err))
+})
 
 export default Task;
