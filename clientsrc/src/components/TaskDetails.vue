@@ -30,7 +30,7 @@
                   required
                   v-model="comment.body"
                 />
-                <button type="submit" class="mx-2 btn btn-sm btn-secondary">Add Comment</button>
+                <button type="submit" class="mx-2 btn btn-sm btn-secondary mt-2">Add Comment</button>
               </div>
             </form>
           </div>

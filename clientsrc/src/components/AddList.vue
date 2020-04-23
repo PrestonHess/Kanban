@@ -1,7 +1,7 @@
 <template>
   <div class="add-list">
     <div class="row justify-content-center">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <form class="form-inline justify-content-center" @submit.prevent="addList()">
           <div class="form-group">
             <input
@@ -14,7 +14,7 @@
               required
               v-model="newList.title"
             />
-            <button type="submit" class="mx-2 btn btn-sm btn-secondary">Add List</button>
+            <button type="submit" class="mx-2 btn btn-sm btn-secondary ">Add List</button>
           </div>
         </form>
       </div>

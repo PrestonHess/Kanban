@@ -1,13 +1,13 @@
 <template>
-  <div class="list my-2 col-6 col-md-3">
+  <div class="list my-2  col-lg-4 col-md-6 col-sm-12 ">
     <div class="card shadow">
       <div>
         <button type="button" class="close text-danger text-right pr-2 pt-1" @click="deleteList()">
           <span>&times;</span>
         </button>
       </div>
-      <div class="card-body">
-        <h3 class="card-title text-capitalize my-n4">{{listData.title}}</h3>
+      <div class="card-body ct-border">
+        <h4 class="card-title text-capitalize my-n4">{{listData.title}}</h4>
       </div>
       <ul class="list-group list-group-flush">
         <Task v-for="Task in Tasks" :taskData="Task" :key="Task._id"></Task>
@@ -74,7 +74,16 @@ export default {
 
 <style scoped>
 .card-title {
-  font-family: "Patrick Hand", cursive;
-  text-decoration: underline;
+font-family: 'Fira Sans Condensed', sans-serif;
+  /* text-decoration: underline; */
+}
+.ct-border{
+  /* border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1px;
+  border-style: double;
+  border-color: black; */
+  border-bottom: 1px dotted rgb(71, 71, 71)
 }
 </style>
