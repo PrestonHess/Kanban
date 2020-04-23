@@ -7,14 +7,14 @@
           <input
             type="text"
             class="form-control m-1"
-            placeholder="title"
+            placeholder="Title"
             v-model="newBoard.title"
             required
           />
           <input
             type="text"
             class="form-control m-1"
-            placeholder="description"
+            placeholder="Description"
             v-model="newBoard.description"
           />
           <button class="btn btn-secondary" type="submit">Create Board</button>
@@ -24,12 +24,12 @@
 
     <div class="row justify-content-center">
     <div v-for="board in boards" :boardId="board._id" :key="board.id">
-      <div class="card m-2">
+      <div class="card bg-light shadow p-3 m-3">
         <div class="card-body bg-light">
           <button type="button" class="close text-danger" @click="deleteBoard(board._id)">
           <span>&times;</span>
         </button>
-          <router-link
+          <router-link id="board-card"
             @click="setActiveBoard(board._id)"
             :to="{name: 'board', params: {boardId: board.id}}"
           >{{board.title}}</router-link>
@@ -70,3 +70,9 @@ export default {
   }
 };
 </script>
+
+<style>
+#board-card{
+  color:black
+}
+</style>

@@ -27,7 +27,7 @@
           :class="{ active: $route.name == 'boards' }"
         >
           <router-link class="nav-link" :to="{ name: 'boards' }"
-            >My-Dashboard</router-link
+            >Dashboard</router-link
           >
         </li>
       </ul>

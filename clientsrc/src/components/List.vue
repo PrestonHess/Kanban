@@ -10,7 +10,7 @@
       </button>
   <div class="card-body">
     
-    <h5 class="card-title">{{listData.title}}</h5>
+    <h5 class="card-title text-uppercase">{{listData.title}}</h5>
   </div>
   <ul class="list-group list-group-flush">
     <Task v-for="Task in Tasks" :taskData="Task" :key="Task._id"> </Task>
@@ -68,7 +68,4 @@ export default {
 
 
 <style scoped>
-.card{
-  /* background-color: #EEF4F1; */
-}
 </style>
