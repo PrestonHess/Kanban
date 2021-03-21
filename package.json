@@ -8,6 +8,7 @@
     "start": "node index.js",
     "dev": "node index.js",
     "setup": "npm install"
+    
   },
   "author": "Codeworks",
   "license": "ISC",
